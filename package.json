@@ -1,0 +1,30 @@
+{
+  "name": "interactivesql",
+  "version": "0.1.0",
+  "description": "An interactive terminal-based SQL management tool.",
+  "type": "module",
+  "bin": {
+    "intersql": "bin/intersql.js"
+  },
+  "keywords": [
+    "sql",
+    "database",
+    "cli",
+    "terminal",
+    "interactive",
+    "database-management"
+  ],
+  "license": "MIT",
+  "author": "DelfinIbnKadafi",
+  "homepage": "https://github.com/DelfinIbnKadafi/InteractiveSQL#readme",
+  "bugs": {
+    "url": "https://github.com/DelfinIbnKadafi/InteractiveSQL/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DelfinIbnKadafi/InteractiveSQL.git"
+  },
+  "dependencies": {
+    "mysql2": "^3.24.6"
+  }
+}
