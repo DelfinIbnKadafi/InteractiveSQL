@@ -3,11 +3,12 @@
 const prompt = require("prompt-sync")({ sigint: true });
 
 const { connect } = require("./mysql/connect");
+const { openTable } = require("./mysql/table");
 
 const { showHelp } = require("./utils");
 
 async function main() {
-    console.log("Interactive SQL 0.1.0\n");
+    console.log("Interactive SQL 0.1.1\n");
     await new Promise(resolve => setTimeout(resolve, 2000));
 
     let response_connect = false;
@@ -26,17 +27,47 @@ async function main() {
         name_db = prompt(" > Enter database name : ");
 
         response_connect = await connect(host_db, user_db, pass_db, name_db);
-    } 
+    }
+
+    const database = response_connect;
 
     console.log("Succesfully connect to", name_db);
 
     let path = `${host_db}@${name_db}`;
+    let table_now = null;
     let command  = "none"; // make the var changeable
 
     while(command !== "exit") {
         const prompt_path = `${path} -> `;
         command = prompt(prompt_path);
         if(command === "help") showHelp();
+
+        // opentable
+        if(command === "opentable") {
+            // check if user already opened table
+            if(table_now !== null) {
+                console.log(" > You already opened table, use exittable to exit curently table.");
+                continue;
+            }
+
+            const table_name = prompt(" > Table name : ");
+            if(table_name.length < 1) {
+                console.log(" > Length of table name must be more than 0!");
+                return;
+            }
+
+            // check response from opentable, return true if succes, else false
+            if(await openTable(database, table_name) === true) {
+                // then change path and table now
+                table_now = table_name;
+                path = `${host_db}@${name_db}/${table_now}`;
+                continue;
+            }
+            else {
+                console.log(" > Cant find table!");
+                continue;
+            }
+        }
     }
 
     return process.exit();

@@ -1,6 +1,6 @@
 {
   "name": "interactivesql",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An interactive terminal-based SQL management tool.",
   "type": "commonjs",
   "bin": {
