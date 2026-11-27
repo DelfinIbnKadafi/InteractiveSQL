@@ -3,6 +3,7 @@ const helptext = ` > Command List
    opentable - open table in database
    exittable - exit current table
    listtable - list all tables
+   listcolumn - list all column
 `;
 
 function showHelp() {

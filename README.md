@@ -20,7 +20,7 @@ npm install
 Start the interactive CLI:
 
 ```sh
-npm run dev
+npm start
 ```
 
 The program asks for:
@@ -46,6 +46,7 @@ The prompt continues until the `exit` command is entered.
 | `opentable` | Open a table in the connected database |
 | `exittable` | Exit the currently opened table |
 | `listtable` | List all tables in the connected database |
+| `listcolumn` | List all column in the opened table |
 | `help` | Show the command list |
 
 When a table is open, the prompt changes to:

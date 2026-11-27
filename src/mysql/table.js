@@ -16,6 +16,7 @@ async function showTable(database) {
     const tableNames = rows.map(row => Object.values(row)[0]);
 
     console.log(tableNames);
+    return true;
 }
 
 module.exports = {
