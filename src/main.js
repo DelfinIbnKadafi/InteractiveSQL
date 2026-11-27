@@ -3,7 +3,7 @@
 const prompt = require("prompt-sync")({ sigint: true });
 
 const { connect } = require("./mysql/connect");
-const { openTable } = require("./mysql/table");
+const { openTable, showTable } = require("./mysql/table");
 
 const { showHelp } = require("./utils");
 
@@ -67,6 +67,31 @@ async function main() {
                 console.log(" > Cant find table!");
                 continue;
             }
+        }
+
+        // exit curently table
+        if(command === "exittable") {
+            if(table_now === null) {
+                console.log(" > You are not in any tables.");
+                continue;
+            }
+
+            table_now = null;
+            
+            path = `${host_db}@${name_db}`;
+
+            continue;
+        }
+
+        // list all table
+        if(command === "listtable") {
+            // check if user already opened table
+            if(table_now !== null) {
+                console.log(" > You already opened table, use exittable to exit curently table.");
+                continue;
+            }
+
+            await showTable(database);
         }
     }
 

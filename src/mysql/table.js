@@ -10,6 +10,15 @@ async function openTable(database, tablename) {
     return false;
 }
 
+async function showTable(database) {
+    const [rows] = await database.query('SHOW TABLES');
+
+    const tableNames = rows.map(row => Object.values(row)[0]);
+
+    console.log(tableNames);
+}
+
 module.exports = {
-    openTable
+    openTable,
+    showTable
 }
