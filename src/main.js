@@ -5,7 +5,7 @@ const prompt = require("prompt-sync")({ sigint: true });
 const { connect } = require("./mysql/connect");
 const { openTable, showTable } = require("./mysql/table");
 
-const { showColumn } = require("./mysql/column");
+const { showColumn, insertColumn } = require("./mysql/column");
 
 const { showHelp } = require("./utils");
 
@@ -106,6 +106,17 @@ async function main() {
             }
 
             await showColumn(database, table_now);
+        }
+
+        // insert column
+        if(command === "insert") {
+            // check if user is not opened any table
+            if(table_now === null) {
+                console.log(" > You are not open any tables.");
+                continue;
+            }
+
+            await insertColumn(database, table_now);
         }
 
     }

@@ -47,6 +47,7 @@ The prompt continues until the `exit` command is entered.
 | `exittable` | Exit the currently opened table |
 | `listtable` | List all tables in the connected database |
 | `listcolumn` | List all column in the opened table |
+| `insert` | Insert data to table |
 | `help` | Show the command list |
 
 When a table is open, the prompt changes to:

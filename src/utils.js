@@ -4,6 +4,7 @@ const helptext = ` > Command List
    exittable - exit current table
    listtable - list all tables
    listcolumn - list all column
+   insert - insert data to column in a table
 `;
 
 function showHelp() {
